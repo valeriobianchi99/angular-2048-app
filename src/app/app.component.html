@@ -1,0 +1,73 @@
+<!-- Header -->
+<div id="topHeader">
+  <h2 style="font-weight: 40"><strong>2048</strong>&nbsp;<span style="opacity: 0.3; font-size: 16px">(very very
+      Beta)</span></h2>
+  <hr>
+</div>
+<!---->
+
+<!-- Left side: game -->
+<div id="game" (click)="checkGame()">
+  <!-- Up/Left buttons -->
+  <button class="contButtonsLeft" (click)="pushLeft()"></button>
+  <button class="contButtonsUp" (click)="pushTop()"></button>
+  <!---->
+  <!-- Box with the cells -->
+  <div id="box">
+    <table cellspacing='4'>
+      <tbody>
+        <!-- Rows -->
+        <tr>
+          <td [class]="classes[n]" *ngFor="let n of first;">
+            {{ n }}
+          </td>
+        </tr>
+        <tr>
+          <td [class]="classes[n]" *ngFor="let n of second;">
+            {{ n }}
+          </td>
+        </tr>
+        <tr>
+          <td [class]="classes[n]" *ngFor="let n of third;">
+            {{ n }}
+          </td>
+        </tr>
+        <tr>
+          <td [class]="classes[n]" *ngFor="let n of fourth;">
+            {{ n }}
+          </td>
+        </tr>
+        <!---->
+      </tbody>
+    </table>
+  </div>
+  <!---->
+  <!-- Down/Right buttons -->
+  <button class="contButtonsRight" (click)="pushRight();"></button>
+  <button class="contButtonsDown" (click)="pushDown();"></button>
+  <!---->
+</div>
+<!---->
+
+<!-- Right side: controls -->
+<div id="controls">
+  <button id="newPlay" (click)="newGame()">Nuova partita</button>
+  <button id="points"><span style="opacity:0.7; text-shadow: none">Punteggio
+    </span><strong>{{ points }}</strong></button>
+  <br>
+  <span id="record">Punteggio più alto: <strong>{{ record }}</strong></span>
+  <br>
+  <br>
+  <!-- Win/Lost messages -->
+  <div *ngIf="win" class="endGame">
+    <h2 class="result">Hai vinto! </h2>
+    <small style="opacity: 0.6; color:white;">Clicca su "nuova partita" per giocare ancora!</small>
+  </div>
+  <div *ngIf="lost" class="endGame">
+    <h2 class="result">Hai perso!</h2>
+    <span (click)="newGame();" class="link"><u>Riprova...</u></span>
+  </div>
+  <!---->
+</div>
+<!---->
+<!-- End of document -->
